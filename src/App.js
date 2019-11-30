@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import logo from './logo.svg'
-import './App.css'
+import GlobalStyle from './Global'
 
 const size = {
   small: 400,
@@ -83,6 +83,7 @@ const AppWrapper = styled.div`
 const App = () => {
   return (
     <AppWrapper>
+      <GlobalStyle />
       <header className='App-header'>
         <img src={logo} className='App-logo' alt='logo' />
         <Heading>
