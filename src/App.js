@@ -1,30 +1,82 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import logo from './logo.svg'
 import './App.css'
 
+const size = {
+  small: 400,
+  medium: 960,
+  large: 1140
+}
+
+// const above = Object.keys(size).reduce((acc, label) => {
+//   acc[label] = (...args) => css`
+//     @media (min-width: ${size[label]}px) {
+//       ${css(...args)}
+//     }
+//   `
+//   return acc
+// }, {})
+
+const above = Object.keys(size).reduce((acc, label) => {
+  acc[label] = (...args) => css`
+    @media (min-width: ${size[label] / 16}em) {
+      ${css(...args)}
+    }
+  `
+  return acc
+}, {})
+
+console.log('above', above)
+
+const Fake = ({ className }) => (
+  <div className={className}>
+    <h2>I'm a fake component</h2>
+  </div>
+)
+
+const DoubleFake = styled(Fake)`
+  h2 {
+    color: red;
+  }
+`
+
+// CSS Helper
+//needed for props in mixins
+const fixedTop = css`
+  position: fixed;
+  top: ${({ top }) => top + 'px'};
+  left: 0;
+`
+
 const Heading = styled.h1`
   font-size: 2rem;
+  ${above.medium`
+    color: blue
+  `}
 `
 
 const color = 'white'
 
 const Button = styled.button`
-  background: indigo;
-  padding: 5px 10px;
+  padding: 5px 20px;
   border-radius: 4px;
   border: none;
   color: ${color};
   font-size: 2rem;
-  background: ${({ type }) => (type === 'cancel' ? 'tomato' : 'indigo')};
+  background: indigo;
+`
+const CancelButton = styled(Button)`
+  background: tomato;
+  ${fixedTop};
 `
 
 const AppWrapper = styled.div`
   header {
     background: teal;
-    &:hover {
-      background: red;
-    }
+  }
+  ${Button} {
+    margin-bottom: 2rem;
   }
 `
 
@@ -36,8 +88,10 @@ const App = () => {
         <Heading>
           Edit <code>src/App.js</code> and save to reload.
         </Heading>
-        <Button type='cancel'>Save</Button>
-        <Button type='save'>Save</Button>
+        <Fake />
+        <DoubleFake />
+        <Button>Save</Button>
+        <CancelButton top={100}>Cancel</CancelButton>
 
         <Heading>Heading two</Heading>
         <a
