@@ -1,6 +1,10 @@
 //brand colors
-export const primary = '#FF1053'
-export const secondary = '#6C6EA0'
+export const main = {
+  primary: '#004445',
+  secondary: '#2c7873',
+  tertiary: '#6fb98f',
+  quaternary: '#ffd800'
+}
 
 //social colors
 export const social = {
