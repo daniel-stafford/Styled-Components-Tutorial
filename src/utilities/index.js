@@ -5,6 +5,6 @@ import elevation from './Elevation'
 export * from './Breakpoints.js'
 export * from './Position.js'
 export * from './Colors.js'
-export * from './Elevation'
+export * from './Type'
 
 export { elevation }
