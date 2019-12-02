@@ -8,11 +8,10 @@ const App = () => (
     <GlobalStyle />
     <Header />
     <Button>Say Hello</Button>
-    <Button type='cancel'>Cancel via Type</Button>
-
-    <CancelButton>Don't Say Hello</CancelButton>
-    <Button size='small'>Say Hello</Button>
-    <CancelButton size='small'>Don't Say Hello</CancelButton>
+    <Button modifiers='cancel'>Cancel via Type</Button>
+    <Button modifiers='cancel'>Don't Say Hello</Button>
+    <Button modifiers='small'>Say Hello</Button>
+    <Button modifiers={['small', 'cancel']}>Don't Say Hello</Button>
   </>
 )
 
