@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 import { applyStyleModifiers } from 'styled-components-modifiers'
-import { main, elevation } from '../utilities'
+import { elevation } from '../utilities'
 
 const BUTTON_MODIFIERS = {
   small: () => `
     font-size: 1rem;
     padding: 3px 10px; 
   `,
-  cancel: () => `
-    background: tomato;
+  cancel: ({ theme }) => `
+  background: ${theme.colors.secondary};
   `
 }
 
@@ -19,7 +19,7 @@ export const Button = styled.button`
   border: none;
   color: white;
   font-size: 2rem;
-  background: ${main.tertiary};
+  background: ${props => props.theme.colors.primary};
   transition: 0.3s ease box-shadow;
   &:hover {
     ${elevation[2]};
